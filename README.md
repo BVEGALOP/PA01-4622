@@ -16,26 +16,4 @@ Este proyecto es una extensión del Sistema de Pedidos base (Servlet + JSP + Mav
 3. Abre el navegador en: [http://localhost:8081/sistema-pedidos/](http://localhost:8081/sistema-pedidos/)
 4. Para detener la aplicación, presiona `Ctrl + C` en la terminal.
 
-## Arquitectura y Diagrama
-Se mantiene la separación de responsabilidades y la arquitectura en capas:
 
-```mermaid
-flowchart TD
-    Browser[Navegador Web / JSP]
-    Controller[PedidoServlet]
-    Service[PedidoService @Stateless]
-    JPA[EntityManager / JPA]
-    DB[(H2 Database)]
-
-    Browser -- "GET (Ver)" --> Controller
-    Browser -- "POST (Crear)" --> Controller
-    Browser -- "PUT (Editar) via JS Fetch" --> Controller
-    Browser -- "DELETE (Eliminar) via JS Fetch" --> Controller
-
-    Controller -- "Reglas de negocio" --> Service
-    Service -- "Transacciones / Persistencia" --> JPA
-    JPA -- "SQL" --> DB
-`
-
----
-**Nota para el informe:** Recuerda incluir capturas de la herramienta *Network/Red* del navegador evidenciando estas llamadas HTTP, además de las pantallas de la interfaz para cada caso práctico antes y después del cambio.
