@@ -1,0 +1,26 @@
+[ Client Tier ]
+Navegador Web (HTML + JavaScript)
+      │
+      │  (1) Flujo Edición: HTTP PUT
+      │  (2) Flujo Eliminación: HTTP DELETE
+      ▼
+┌───────────────────────────────────────────────────────────┐
+│                 Web Container (WildFly)                   │
+│                                                           │
+│  [ Web Tier ]                                             │
+│  PedidoServlet (Controlador) ────────> pedidos.jsp (Vista)│
+│          │                                                │
+│          │ Delega las operaciones                         │
+│          ▼                                                │
+│  [ Business Tier ]                                        │
+│  PedidoService (@Stateless)                               │
+│          │                                                │
+│          │ Aplica reglas de negocio                       │
+│          ▼                                                │
+│  JPA / EntityManager                                      │
+└───────────────────────────────────────────────────────────┘
+      │
+      │ Persistencia (SQL)
+      ▼
+[ EIS / Datos Tier ]
+Base de Datos H2 (Memoria)
